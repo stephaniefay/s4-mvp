@@ -1,20 +1,25 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-import joblib
 import os
+import joblib
+import requests
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_URL = "https://github.com/stephaniefay/s4-mvp/releases/download/pkl/modelo_genero_livros_imp.pkl"
+MODEL_PATH = "modelo.pkl"
 
-model_path = os.path.join(
-    BASE_DIR,
-    "..",
-    "Machine Learning",
-    "model",
-    "modelo_genero_livros_imp.pkl"
-)
+# Download only if not exists
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model...")
+    response = requests.get(MODEL_URL)
+    
+    with open(MODEL_PATH, "wb") as f:
+        f.write(response.content)
 
-model = joblib.load(model_path)
+# Load model
+model = joblib.load(MODEL_PATH)
+
+print("Model loaded successfully 🚀")
 
 app = FastAPI()
 
