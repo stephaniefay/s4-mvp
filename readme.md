@@ -97,6 +97,10 @@ python -m uvicorn main:app --reload
 
 ## 🧪 Running Tests
 
+```bash
+pip install -r requirements-test.txt
+```
+
 To run automated tests:
 
 ```bash
