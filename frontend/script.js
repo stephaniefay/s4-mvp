@@ -1,24 +1,18 @@
 function formatGenres(rawGenre) {
-    // Split by common separators (; or ,)
     let genres = rawGenre.split(/[,;]+/);
 
-    // Normalize (trim + lowercase)
     genres = genres.map(g => g.trim().toLowerCase());
 
-    // Remove duplicates
     genres = [...new Set(genres)];
 
-    // Capitalize nicely
     genres = genres.map(g =>
         g.split(' ')
          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
          .join(' ')
     );
 
-    // Limit to 3 genres (keeps UI clean)
     genres = genres.slice(0, 3);
 
-    // Join with nice separator
     return genres.join(" • ");
 }
 
@@ -85,10 +79,8 @@ async function predict() {
         return;
     }
 
-    // Reset all classes
     crow.classList.remove("thinking", "happy", "spooky", "smart", "romantic");
 
-    // Thinking state 🧠
     result.innerText = "The crow is thinking...";
     crow.classList.add("thinking");
     crowMessage.innerText = "";
@@ -102,15 +94,12 @@ async function predict() {
 
         const rawGenre = data.predicted_genre;
 
-        // ✨ Clean + format genres
         const formattedGenre = formatGenres(rawGenre);
 
         result.innerText = "📚 Genre: " + formattedGenre;
 
-        // Use cleaned genre for reaction
         const reaction = getCrowReaction(formattedGenre);
 
-        // Apply reaction 🐦‍⬛✨
         crow.innerText = reaction.emoji;
 
         crow.classList.remove("thinking");
