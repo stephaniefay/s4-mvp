@@ -40,6 +40,9 @@ def home():
 
 @app.get("/predict")
 def predict(title: str):
+    if not title.strip():
+        return {"error": "Title cannot be empty"}
+    
     prediction = model.predict([title])[0]
    
     return {
