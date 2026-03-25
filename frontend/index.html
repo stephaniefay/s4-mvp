@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Book Genre Classifier</title>
-    <script src="index.js"></script>
+    <meta charset="UTF-8">
+    <title>Crow's Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>📚 Book Genre Classifier</h1>
+<div class="container">
+    <div id="crow" class="crow">🐦‍⬛📖</div>
+    <div id="crow-message" class="crow-message"></div>
 
-<input type="text" id="title" placeholder="Enter book title" size="40">
-<button onclick="predict()">Predict</button>
+    <h1>Crow's Library</h1>
+    <div class="subtitle">Whisper a title… the crow knows its genre</div>
 
-<h2 id="result"></h2>
+    <input type="text" id="title" placeholder="Enter a book title...">
+    <br>
+    <button onclick="predict()">Predict</button>
 
+    <div class="result" id="result"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

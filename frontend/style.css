@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #1e1e2f, #2c2c3e);
+    color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #cfcfcf;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 80%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #6c63ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #574fd6;
+}
+
+.result {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.crow {
+    font-size: 40px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.crow-message {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #cfcfcf;
+    min-height: 20px;
+}
+
+/* Thinking animation */
+.crow.thinking {
+    animation: think 1s infinite alternate;
+}
+
+@keyframes think {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+/* Mood styles */
+.crow.happy {
+    transform: scale(1.1);
+}
+
+.crow.spooky {
+    filter: drop-shadow(0 0 8px purple);
+}
+
+.crow.smart {
+    transform: rotate(2deg);
+}
+
+.crow.romantic {
+    filter: drop-shadow(0 0 6px pink);
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
