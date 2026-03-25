@@ -21,16 +21,21 @@ It consists of:
 
 ## 📁 Project Structure
 
+```
 backend/
 ├── Machine Learning/
 │   ├── dataset/
 │   ├── model/
 │   └── notebook/
 ├── routes/
-│   └── main.py
+│   ├── main.py
+│   └── test_main.py
 
 frontend/
-└── index.html
+├── index.html
+├── index.js
+└── index.css
+```
 
 ---
 
