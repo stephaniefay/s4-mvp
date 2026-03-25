@@ -8,22 +8,15 @@ Este trabalho tem como objetivo desenvolver um modelo de Machine Learning para c
 
 ## 2. Base de Dados
 
-A [base de dados](https://www.kaggle.com/datasets/athu1105/tagmybook/data) contém informações sobre livros, incluindo:
+A [base de dados]([https://www.kaggle.com/datasets/athu1105/tagmybook/data](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data)) contém informações sobre livros, incluindo:
 
 * Título (`title`)
-* Sinopse (`synopsis`)
 * Gênero (`genre`)
 
 A variável **gênero** foi utilizada como variável alvo (target), enquanto os campos textuais foram utilizados como entrada.
 
 
 ## 3. Pré-processamento dos Dados
-
-Foi criada uma nova variável textual combinando o título e a sinopse:
-
-```python
-dataset['text'] = dataset['title'] + " " + dataset['synopsis']
-```
 
 Registros com valores ausentes foram removidos. Para converter os dados textuais em formato numérico, foi utilizada a técnica de **TF-IDF (Term Frequency–Inverse Document Frequency)**, essa técnica também atua como uma forma de normalização, eliminando a necessidade de métodos adicionais como padronização com StandardScaler.
 
@@ -92,7 +85,7 @@ best_model.fit(X, y)
 O modelo foi então salvo utilizando a biblioteca `joblib`:
 
 ```python
-joblib.dump(best_model, "./model/modelo_genero_livros.pkl")
+joblib.dump(best_model, "./model/modelo_genero_livros_imp.pkl")
 ```
 
 
