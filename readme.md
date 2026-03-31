@@ -8,14 +8,10 @@ Ele consiste de:
 * Uma API backend construída com FastAPI
 * Um frontend simples que demonstra a predição da ML
 
----
-
 ## Features
 
 * Preve o gênero de um livro baseado em seu título
 * Modelo carregado dinamicamente via [releases](https://github.com/stephaniefay/s4-mvp/releases/tag/pkl) para evitar files grandes no repositório
-
----
 
 ## Estrutura do projeto
 
@@ -41,14 +37,10 @@ frontend/
 └── style.css
 ```
 
----
-
 ## Requirements
 
 * Python 3.10+
 * pip
-
----
 
 ## Instalação
 
@@ -61,7 +53,7 @@ cd s4-mvp/backend/routes
 
 ---
 
-### Crie um ambiente virtual e ative-o
+### 2. Crie um ambiente virtual e ative-o
 
 ```bash
 python -m venv venv
@@ -89,15 +81,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
-
 ## Rodando a API
 
 ```bash
 python -m uvicorn main:app --reload
 ```
-
----
 
 ## Rodando os Testes 
 
@@ -111,8 +99,6 @@ Para rodar os testes:
 pytest
 ```
 
----
-
 ## Acesso a API
 
 uma vez que esteja rodando, você poderá acessar esses endpoints:
@@ -123,8 +109,6 @@ uma vez que esteja rodando, você poderá acessar esses endpoints:
 * Interactive docs (Swagger):
   http://127.0.0.1:8000/docs
 
----
-
 ## Fazendo uma requisição de predição
 
 Você pode utilizar o browser (GET) para testar o modelo:
@@ -132,8 +116,6 @@ Você pode utilizar o browser (GET) para testar o modelo:
 ```
 http://127.0.0.1:8000/predict?title=The%20Art%20of%20War
 ```
-
----
 
 ## Executando o frontend
 
@@ -149,15 +131,11 @@ Fluxo básico de execução:
 2. Clique em "Predict"
 3. Visualize o gênero que foi predito (e aprecie os corvos! 🐦‍⬛)
 
----
-
 ## Notas
 
 * Construído usando TF-IDF + SVM
 * Treinado usando o [dataset](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data) do site Goodreads, conhecido por uma extensa database de livros
 * Usa, hoje, apenas o título como input de predição
-
----
 
 ## Limitações
 
@@ -165,15 +143,11 @@ Fluxo básico de execução:
 * Algumas predições podem não estar corretas
 * Modelo ainda não entende semântica, apenas padrões
 
----
-
 ## Melhorias futuras (previstas)
 
 * Adicionar suporte a sinopses para aumentar a confiabilidade
 * Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
 * Aplicar modelos NLP avançados (BERT, embeddings)
-
----
 
 ## Autora
 
