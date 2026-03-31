@@ -1,54 +1,58 @@
-# 📚 Book Genre Classifier
+# Book Genre Classifier
 
-This project is a Machine Learning application that predicts the genre of a book based on its title.
+Esse projeto contém uma aplicação que possui machine learning utilizada para predizer o gênero de um livro baseado em seu título (apenas títulos em inglês, por hora).
 
-It consists of:
+Ele consiste de:
 
-* 🧠 A trained ML model (Scikit-Learn)
-* ⚙️ A backend API built with FastAPI
-* 🎨 A simple frontend for interaction
-
----
-
-## 🚀 Features
-
-* Predicts book genre from title
-* REST API with FastAPI
-* Simple frontend interface
-* Model loaded dynamically from URL (avoids large files in repo)
+* Um modelo ML treinado via Scikit-Learn
+* Uma API backend construída com FastAPI
+* Um frontend simples que demonstra a predição da ML
 
 ---
 
-## 📁 Project Structure
+## Features
+
+* Preve o gênero de um livro baseado em seu título
+* Modelo carregado dinamicamente via [releases](https://github.com/stephaniefay/s4-mvp/releases/tag/pkl) para evitar files grandes no repositório
+
+---
+
+## Estrutura do projeto
 
 ```
 backend/
 ├── Machine Learning/
 │   ├── dataset/
+│   │   ├── data.csv
+│   │   └── old_data.csv (não utilizado, mantido apenas para referência)
 │   ├── model/
+│   │   ├── modelo_genero_livros.pkl
+│   │   └── old_modelo_genero_livros.pkl (não utilizado, mantido apenas para referência)
 │   └── notebook/
+│   │   ├── machine_learning.ipynb
+│   │   └── old_machine_learning.ipynb (não utilizado, mantido apenas para referência)
 ├── routes/
 │   ├── main.py
 │   └── test_main.py
 
 frontend/
 ├── index.html
-├── index.js
-└── index.css
+├── script.js
+└── style.css
 ```
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 * Python 3.10+
 * pip
 
 ---
 
-## 📦 Installation
+## Instalação
 
-### 1. Clone the repository
+### 1. Clone do repositório
 
 ```bash
 git clone https://github.com/stephaniefay/s4-mvp.git
@@ -57,13 +61,13 @@ cd s4-mvp/backend/routes
 
 ---
 
-### 2. (Optional) Create a virtual environment
+### Crie um ambiente virtual e ative-o
 
 ```bash
 python -m venv venv
 ```
 
-Activate it:
+Ativação:
 
 **Windows:**
 
@@ -79,7 +83,7 @@ source venv/bin/activate
 
 ---
 
-### 3. Install dependencies
+### 3. Instale as dependências
 
 ```bash
 pip install -r requirements.txt
@@ -87,7 +91,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Running the Backend
+## Rodando a API
 
 ```bash
 python -m uvicorn main:app --reload
@@ -95,13 +99,13 @@ python -m uvicorn main:app --reload
 
 ---
 
-## 🧪 Running Tests
+## Rodando os Testes 
 
 ```bash
 pip install -r requirements-test.txt
 ```
 
-To run automated tests:
+Para rodar os testes:
 
 ```bash
 pytest
@@ -109,9 +113,9 @@ pytest
 
 ---
 
-## 🌐 API Access
+## Acesso a API
 
-Once running, open:
+uma vez que esteja rodando, você poderá acessar esses endpoints:
 
 * API root:
   http://127.0.0.1:8000
@@ -121,9 +125,9 @@ Once running, open:
 
 ---
 
-## 🔮 Making Predictions
+## Fazendo uma requisição de predição
 
-Using browser (GET request):
+Você pode utilizar o browser (GET) para testar o modelo:
 
 ```
 http://127.0.0.1:8000/predict?title=The%20Art%20of%20War
@@ -131,46 +135,46 @@ http://127.0.0.1:8000/predict?title=The%20Art%20of%20War
 
 ---
 
-## 🎨 Running the Frontend
+## Executando o frontend
 
-Open the file:
+Abre o arquivo em seu navegador de preferência (foi testado apenas em chrome):
 
 ```
 frontend/index.html
 ```
 
-Then:
+Fluxo básico de execução:
 
-1. Enter a book title
-2. Click "Predict"
-3. View the predicted genre
-
----
-
-## 🧠 Model Notes
-
-* Built using TF-IDF + SVM
-* Trained on Goodreads dataset
-* Uses only book titles as input
+1. Insira um título de livro
+2. Clique em "Predict"
+3. Visualize o gênero que foi predito (e aprecie os corvos! 🐦‍⬛)
 
 ---
 
-## ⚠️ Limitations
+## Notas
 
-* Titles alone may not provide enough context
-* Some predictions may be inaccurate
-* Model does not understand semantics, only patterns
-
----
-
-## 🚀 Future Improvements
-
-* Add synopsis support
-* Use larger and richer datasets
-* Apply advanced NLP models (BERT, embeddings)
+* Construído usando TF-IDF + SVM
+* Treinado usando o [dataset](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data) do site Goodreads, conhecido por uma extensa database de livros
+* Usa, hoje, apenas o título como input de predição
 
 ---
 
-## 👩‍💻 Author
+## Limitações
+
+* O uso apenas de títulos pode não ser contexto o suficiente para possuir uma confiabilidade grande
+* Algumas predições podem não estar corretas
+* Modelo ainda não entende semântica, apenas padrões
+
+---
+
+## Melhorias futuras (previstas)
+
+* Adicionar suporte a sinopses para aumentar a confiabilidade
+* Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
+* Aplicar modelos NLP avançados (BERT, embeddings)
+
+---
+
+## Autora
 
 Stephanie Fay

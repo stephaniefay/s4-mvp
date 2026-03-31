@@ -3,12 +3,15 @@
 
 ## 1. Introdução
 
-
 Este trabalho tem como objetivo desenvolver um modelo de Machine Learning para classificar automaticamente o gênero de livros com base em seus títulos e sinopses. A classificação de textos é uma tarefa importante em diversas aplicações, como sistemas de recomendação e organização de conteúdo digital.
+
+> [!IMPORTANT]
+> O repositório contém arquivos marcados como ``old_``, esses arquivos foram os primeiros utilizados (e posteriormente descartados) dado que o dataset era pequeno.
+> A grande razão foi apenas porque apesar do dataset anterior conter sinopses, existiam poucas entradas e não achei que a acurácia do modelo estava satisfatória. O novo dataset, apesar de não conter sinopses, contém diversos titulos relacionados a gêneros, o que aumentou a confiabilidade do modelo.
 
 ## 2. Base de Dados
 
-A [base de dados]([https://www.kaggle.com/datasets/athu1105/tagmybook/data](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data)) contém informações sobre livros, incluindo:
+A [base de dados](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data) contém informações sobre livros, incluindo:
 
 * Título (`title`)
 * Gênero (`genre`)
@@ -85,7 +88,7 @@ best_model.fit(X, y)
 O modelo foi então salvo utilizando a biblioteca `joblib`:
 
 ```python
-joblib.dump(best_model, "./model/modelo_genero_livros_imp.pkl")
+joblib.dump(best_model, "./model/modelo_genero_livros.pkl")
 ```
 
 
