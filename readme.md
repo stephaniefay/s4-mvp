@@ -27,7 +27,7 @@ backend/
 │   └── notebook/
 │   │   ├── machine_learning.ipynb
 │   │   └── old_machine_learning.ipynb (não utilizado, mantido apenas para referência)
-├── routes/
+├── API/
 │   ├── main.py
 │   └── test_main.py
 
