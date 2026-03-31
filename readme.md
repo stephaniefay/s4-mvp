@@ -140,12 +140,14 @@ Fluxo básico de execução:
 ## Limitações
 
 * O uso apenas de títulos pode não ser contexto o suficiente para possuir uma confiabilidade grande
+* Dataset era em inglês, portanto ainda não há suporte para predições em outras línguas
 * Algumas predições podem não estar corretas
 * Modelo ainda não entende semântica, apenas padrões
 
 ## Melhorias futuras (previstas)
 
 * Adicionar suporte a sinopses para aumentar a confiabilidade
+* Adicionar outras línguas
 * Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
 * Aplicar modelos NLP avançados (BERT, embeddings)
 
