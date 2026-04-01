@@ -5,7 +5,7 @@ import os
 import joblib
 import requests
 
-MODEL_URL = "https://github.com/stephaniefay/s4-mvp/releases/download/pkl/modelo_genero_livros_imp.pkl"
+MODEL_URL = "https://github.com/stephaniefay/s4-mvp/releases/download/pklv2/modelo_genero_livros.pkl"
 MODEL_PATH = "modelo.pkl"
 
 # Download only if not exists

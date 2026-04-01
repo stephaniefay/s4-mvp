@@ -53,12 +53,12 @@ A avaliação foi realizada utilizando **validação cruzada estratificada com 1
 
 ## 7. Avaliação dos Modelos
 
-Os modelos foram avaliados com base na métrica de **acurácia** e um gráfico boxplot foi utilizado para comparar o desempenho entre os algoritmos. Modelos baseados em texto, como Naive Bayes e SVM, apresentaram melhor desempenho.
+Os modelos foram avaliados com base na métrica de **acurácia** e um gráfico boxplot foi utilizado para comparar o desempenho entre os algoritmos. Modelos baseados em texto, como SVM, apresentaram melhor desempenho, assim como a Árvore de Decisão.
 
 
 ## 8. Otimização de Hiperparâmetros
 
-Foi utilizada a técnica de **Grid Search (GridSearchCV)** para otimizar o modelo SVM e os parâmetros ajustados incluíram:
+Foi utilizada a técnica de **Grid Search (GridSearchCV)** para otimizar o modelo de árvore de decisão e os parâmetros ajustados incluíram:
 
 * `C` (regularização)
 * `kernel`
