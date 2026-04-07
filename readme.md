@@ -148,7 +148,7 @@ Fluxo básico de execução:
 
 * Adicionar suporte a sinopses para aumentar a confiabilidade
 * Adicionar outras línguas
-* Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
+* Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main), [GoodReads 100k books](https://www.kaggle.com/datasets/mdhamani/goodreads-books-100k?select=GoodReads_100k_books.csv) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
 * Aplicar modelos NLP avançados (BERT, embeddings)
 
 ## Autora
