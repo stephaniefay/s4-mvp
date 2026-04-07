@@ -96,7 +96,7 @@ pip install -r requirements-test.txt
 Para rodar os testes:
 
 ```bash
-pytest
+python -m pytest
 ```
 
 ## Acesso a API
