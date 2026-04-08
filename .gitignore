@@ -1,3 +1,10 @@
 __pycache__/
 .pytest_cache/
-model.pkl
+.venv/
+
+books.csv
+feature_matrix.pkl
+goodreads_rec.csv
+model_metadata.json
+modelo_popularidade.pkl
+tfidf_vetorizador.pkl

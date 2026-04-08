@@ -1,156 +1,121 @@
-# Book Genre Classifier
+# 📚 Biblioteca dos Corvos — MVP
 
-Esse projeto contém uma aplicação que possui machine learning utilizada para predizer o gênero de um livro baseado em seu título (apenas títulos em inglês, por hora).
+Sistema de classificação de popularidade e recomendação de livros
+baseado no dataset [**Goodreads Books 100k**](https://www.kaggle.com/datasets/mdhamani/goodreads-books-100k?select=GoodReads_100k_books.csv).
 
-Ele consiste de:
+---
 
-* Um modelo ML treinado via Scikit-Learn
-* Uma API backend construída com FastAPI
-* Um frontend simples que demonstra a predição da ML
-
-## Features
-
-* Preve o gênero de um livro baseado em seu título
-* Modelo carregado dinamicamente via [releases](https://github.com/stephaniefay/s4-mvp/releases/tag/pkl) para evitar files grandes no repositório
-
-## Estrutura do projeto
+## Estrutura do Projeto
 
 ```
 backend/
-├── Machine Learning/
-│   ├── dataset/
-│   │   ├── data.csv
-│   │   └── old_data.csv (não utilizado, mantido apenas para referência)
-│   ├── model/
-│   │   ├── modelo_genero_livros.pkl
-│   │   └── old_modelo_genero_livros.pkl (não utilizado, mantido apenas para referência)
-│   └── notebook/
-│   │   ├── machine_learning.ipynb
-│   │   └── old_machine_learning.ipynb (não utilizado, mantido apenas para referência)
-├── API/
+├── api/
+│   ├── tests/
+│   │   ├── test_modelo.py                  # Testes automatizados PyTest
 │   ├── main.py
-│   └── test_main.py
+│   ├── requirements.txt
+│   └── readme.md                           # ReadME da API
+└── machine_learning/
+    ├── readme.md                           # ReadME das técnicas aplicadas no notebook de ML
+    ├── dataset/
+    │   └── books.csv                       # Dataset importado do Kaggle
+    ├── model/                              # Artefatos gerados pelo notebook
+    │   ├── modelo_popularidade.pkl
+    │   ├── tfidf_vetorizador.pkl
+    │   ├── feature_matrix.pkl
+    │   ├── goodreads_rec.csv
+    │   └──  model_metadata.json
+    └── notebook/
+        └── goodreads_classificacao.ipynb   # Pipeline ML completo (Google Colab)
 
 frontend/
-├── index.html
+├── index.html                              # Interface "Biblioteca dos Corvos"
 ├── script.js
-└── style.css
+├── style.css
+└── readme.md                               # ReadME explicando os detalhes da interface
 ```
 
-## Requirements
+> [!IMPORTANT]
+> Esse repositório conta com dois releases, um que contém o [dataset](https://github.com/stephaniefay/s4-mvp/releases/tag/csv) e outro que contem os [artefatos](https://github.com/stephaniefay/s4-mvp/releases/tag/pkl).
+> Infelizmente essa abordagem teve que ser usada graças ao tamanho dos arquivos.
 
-* Python 3.10+
-* pip
-
-## Instalação
-
-### 1. Clone do repositório
-
-```bash
-git clone https://github.com/stephaniefay/s4-mvp.git
-cd s4-mvp/backend/routes
-```
+> [!IMPORTANT]
+> Os artefatos serão baixados **automaticamente** da release para o diretório machine_learning/model caso não sejam reconhecidos pela API diante da sua execução
 
 ---
 
-### 2. Crie um ambiente virtual e ative-o
+## 1. Notebook (Google Colab)
 
-```bash
-python -m venv venv
-```
+Abra `notebook/goodreads_classificacao.ipynb` no Google Colab.
 
-Ativação:
-
-**Windows:**
-
-```bash
-.\venv\Scripts\activate
-```
-
-**Mac/Linux:**
-
-```bash
-source venv/bin/activate
-```
+Ao final, caso deseje, você pode fazer o download dos arquivos gerados para verificação. Eles já se encontram disponíveis na aba releases.
 
 ---
 
-### 3. Instale as dependências
+## 2. API (FastAPI)
 
 ```bash
+cd api
 pip install -r requirements.txt
+
+# Coloque os artefatos do notebook aqui antes de rodar
+uvicorn main:app --reload --port 8000
 ```
 
-## Rodando a API
+Documentação interativa disponível em: http://localhost:8000/docs
+
+### Endpoints
+
+| Método | Rota          | Descrição                              |
+|--------|---------------|----------------------------------------|
+| GET    | `/health`     | Status da API e métricas do modelo     |
+| POST   | `/classificar`| Classifica popularidade de um livro    |
+| POST   | `/recomendar` | Recomenda livros similares             |
+
+### Exemplos de uso
 
 ```bash
-python -m uvicorn main:app --reload
+# Classificar
+curl -X POST http://localhost:8000/classificar \
+  -H "Content-Type: application/json" \
+  -d '{"rating": 4.2, "num_avaliacoes": 15000, "num_paginas": 320}'
+
+# Recomendar
+curl -X POST http://localhost:8000/recomendar \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Harry Potter", "top_n": 10}'
 ```
 
-## Rodando os Testes 
+---
+
+## 3. Frontend
+
+Abra `frontend/index.html` diretamente no navegador (duplo clique).
+
+Certifique-se de que a API está rodando em `http://localhost:8000`.
+
+---
+
+## 4. Testes
 
 ```bash
-pip install -r requirements-test.txt
+# Da raiz do projeto:
+pip install pytest
+pytest tests/test_modelo.py -v
 ```
 
-Para rodar os testes:
+Os testes validam:
+- Carregamento correto do modelo
+- Acurácia ≥ 0.70 no conjunto de teste
+- F1-macro ≥ 0.68 no conjunto de teste
+- Formato correto das predições (classes válidas, probabilidades somando 1)
+- Consistência com os resultados registrados no notebook
 
-```bash
-python -m pytest
-```
+---
 
-## Acesso a API
+## Segurança
 
-uma vez que esteja rodando, você poderá acessar esses endpoints:
-
-* API root:
-  http://127.0.0.1:8000
-
-* Interactive docs (Swagger):
-  http://127.0.0.1:8000/docs
-
-## Fazendo uma requisição de predição
-
-Você pode utilizar o browser (GET) para testar o modelo:
-
-```
-http://127.0.0.1:8000/predict?title=The%20Art%20of%20War
-```
-
-## Executando o frontend
-
-Abre o arquivo em seu navegador de preferência (foi testado apenas em chrome):
-
-```
-frontend/index.html
-```
-
-Fluxo básico de execução:
-
-1. Insira um título de livro
-2. Clique em "Predict"
-3. Visualize o gênero que foi predito (e aprecie os corvos! 🐦‍⬛)
-
-## Notas
-
-* Construído usando TF-IDF + SVM
-* Treinado usando o [dataset](https://www.kaggle.com/datasets/middlelight/goodreadsbookswithgenres/data) do site Goodreads, conhecido por uma extensa database de livros
-* Usa, hoje, apenas o título como input de predição
-
-## Limitações
-
-* O uso apenas de títulos pode não ser contexto o suficiente para possuir uma confiabilidade grande
-* Dataset era em inglês, portanto ainda não há suporte para predições em outras línguas
-* Algumas predições podem não estar corretas
-* Modelo ainda não entende semântica, apenas padrões
-
-## Melhorias futuras (previstas)
-
-* Adicionar suporte a sinopses para aumentar a confiabilidade
-* Adicionar outras línguas
-* Usar datasets maiores e ricos (exemplos: [10,000 Books and Their Genres *standardized*](https://www.kaggle.com/datasets/michaelrussell4/10000-books-and-their-genres-standardized), [Goodreads Best Books Ever dataset](https://github.com/scostap/goodreads_bbe_dataset/tree/main), [GoodReads 100k books](https://www.kaggle.com/datasets/mdhamani/goodreads-books-100k?select=GoodReads_100k_books.csv) ou [Goodreads Book Descriptions](https://huggingface.co/datasets/booksouls/goodreads-book-descriptions))
-* Aplicar modelos NLP avançados (BERT, embeddings)
-
-## Autora
-
-Stephanie Fay
+- Inputs sanitizados via Pydantic (validação de tipos e ranges)
+- CORS configurado (restrinja `allow_origins` em produção)
+- Modelo embarcado no back-end (nunca exposto diretamente)
+- Nenhum dado pessoal é coletado ou armazenado
