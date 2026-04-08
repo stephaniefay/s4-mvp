@@ -2,7 +2,7 @@
 
 ## 1. Introdução
 
-Este módulo implementa o back-end da aplicação **Biblioteca de Corvos**, responsável por:
+Este módulo implementa o back-end da aplicação **Biblioteca dos Corvos**, responsável por:
 
 - Servir o modelo de Machine Learning de forma embarcada, sem dependência de serviços externos;
 - Expor endpoints para classificação de popularidade de livros e recomendação por similaridade;
