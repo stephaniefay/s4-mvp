@@ -106,8 +106,8 @@ pytest tests/test_modelo.py -v
 
 Os testes validam:
 - Carregamento correto do modelo
-- Acurácia ≥ 0.70 no conjunto de teste
-- F1-macro ≥ 0.68 no conjunto de teste
+- Acurácia ≥ 0.50 no conjunto de teste
+- F1-macro ≥ 0.40 no conjunto de teste
 - Formato correto das predições (classes válidas, probabilidades somando 1)
 - Consistência com os resultados registrados no notebook
 
