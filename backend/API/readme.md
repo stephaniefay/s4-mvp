@@ -239,8 +239,8 @@ pytest tests/test_modelo.py::TestFormatoDaPredicao -v
 | `TestCargaDoModelo` | `test_modelo_nao_e_none` | Modelo carregado com sucesso |
 | `TestCargaDoModelo` | `test_modelo_tem_metodo_predict` | Possui o método `predict()` |
 | `TestCargaDoModelo` | `test_modelo_tem_metodo_predict_proba` | Possui o método `predict_proba()` |
-| `TestDesempenhoNoTeste` | `test_acuracia_minima` | Acurácia ≥ 0.70 |
-| `TestDesempenhoNoTeste` | `test_f1_macro_minimo` | F1-macro ≥ 0.68 |
+| `TestDesempenhoNoTeste` | `test_acuracia_minima` | Acurácia ≥ 0.50 |
+| `TestDesempenhoNoTeste` | `test_f1_macro_minimo` | F1-macro ≥ 0.40 |
 | `TestDesempenhoNoTeste` | `test_sem_overfitting_suspeito` | F1-macro < 0.99 |
 | `TestFormatoDaPredicao` | `test_predicao_retorna_array` | 5 predições retornadas para 5 entradas |
 | `TestFormatoDaPredicao` | `test_classes_validas` | Classes apenas entre Alta, Média, Baixa |
