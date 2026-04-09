@@ -95,8 +95,7 @@ def _carregar_artefatos():
     log.info(
         "Modelo '%s' carregado · %d livros indexados",
         metadata["melhor_modelo"],
-        len(df_rec),
-        "sim" if col_link else "não",
+        len(df_rec)
     )
     return modelo, tfidf, feature_matrix, df_rec, metadata, col_titulo, col_autor, col_rating, col_link
 
