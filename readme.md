@@ -1,4 +1,4 @@
-# 📚 Biblioteca dos Corvos — MVP
+# Biblioteca dos Corvos — MVP
 
 Sistema de classificação de popularidade e recomendação de livros
 baseado no dataset [**Goodreads Books 100k**](https://www.kaggle.com/datasets/mdhamani/goodreads-books-100k?select=GoodReads_100k_books.csv).
