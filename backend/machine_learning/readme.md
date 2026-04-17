@@ -1,5 +1,7 @@
 # Classificação de Popularidade de Livros com Machine Learning
 
+[Link para o Colab](https://colab.research.google.com/github/stephaniefay/s4-mvp/blob/main/backend/machine_learning/notebook/goodreads_classificacao.ipynb)
+
 ## 1. Introdução
 
 Este módulo tem como objetivo desenvolver um sistema de Machine Learning capaz de:
